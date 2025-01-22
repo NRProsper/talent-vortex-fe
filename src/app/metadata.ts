@@ -7,7 +7,7 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://umurava.africa/";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://talent-vortex-fe.vercel.app";
 
   return {
     metadataBase: new URL(siteUrl),
