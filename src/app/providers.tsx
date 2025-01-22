@@ -9,7 +9,7 @@ function providers({ children }: { children: React.ReactNode; }) {
   return (
     <QueryClientProvider client={client}>
       <Toaster />
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
         {children}
       </ThemeProvider>
     </QueryClientProvider>
