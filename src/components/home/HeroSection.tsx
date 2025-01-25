@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 my-9 flex flex-col-reverse lg:flex-row lg:gap-10 lg:items-center lg:justify-between">
+    <section className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 my-9 md:my-20 flex flex-col-reverse lg:flex-row lg:gap-10 lg:items-center lg:justify-between">
       <div className="w-full lg:w-[40%] mb-8 lg:mb-0">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
           Build Work Experience through Skills Challenges Program
