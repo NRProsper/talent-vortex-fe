@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { CategoryFilter } from "@/components/global/category-filter";
+import { CategoryFilter } from "@/components/global/CategoryFilter";
 import { categories, slides } from "@/data/skills-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
