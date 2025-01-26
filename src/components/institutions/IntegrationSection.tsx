@@ -26,7 +26,7 @@ export function IntegrationSection() {
           ))}
         </div>
         <div className="relative">
-          <Image src="/images/site-main.png" alt="Integration mockup" className="rounded-lg shadow-lg" />
+          <Image src="/images/site-main.png" alt="Integration mockup" className="rounded-lg shadow-lg" width={300} height={300} />
         </div>
       </div>
     </section>
