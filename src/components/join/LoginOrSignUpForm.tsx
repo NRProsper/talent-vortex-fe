@@ -40,6 +40,7 @@ export default function LoginOrSignUpForm() {
     try {
       console.log("Login data:", data);
       toast.success("Successfully logged in!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     }
@@ -49,6 +50,7 @@ export default function LoginOrSignUpForm() {
     try {
       console.log("Signup data:", data);
       toast.success("Account created successfully!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     }

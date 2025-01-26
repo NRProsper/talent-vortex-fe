@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function HeroSection() {
   return (
@@ -14,7 +15,7 @@ export function HeroSection() {
         <Button size="lg">Partner with us</Button>
       </div>
       <div className="relative aspect-video">
-        <img src="/images/site-main.png" alt="Students working at computers" className="rounded-lg object-cover w-full h-full" width={640} height={360} />
+        <Image src="/images/site-main.png" alt="Students working at computers" className="rounded-lg object-cover w-full h-full" width={640} height={360} />
         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#3B82F6] rounded-lg -z-10" />
       </div>
     </section>

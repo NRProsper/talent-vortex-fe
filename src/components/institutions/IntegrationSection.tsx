@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function IntegrationSection() {
   const steps = [
     "As Career Development and Job Readiness Program",
@@ -24,7 +26,7 @@ export function IntegrationSection() {
           ))}
         </div>
         <div className="relative">
-          <img src="/images/site-main.png" alt="Integration mockup" className="rounded-lg shadow-lg" />
+          <Image src="/images/site-main.png" alt="Integration mockup" className="rounded-lg shadow-lg" />
         </div>
       </div>
     </section>
