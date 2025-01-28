@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Box } from "lucide-react";
+import { Briefcase } from "lucide-react";
 
 const offerings = [
   {
@@ -30,19 +30,19 @@ const offerings = [
 
 export function OfferingsSection() {
   return (
-    <section className="container py-16">
-      <h2 className="text-2xl font-bold text-center mb-12">Key Offerings & Benefits:</h2>
-      <div className="grid md:grid-cols-2 gap-6">
+    <section className="py-16 px-4 md:px-8 mx-4 sm:mx-8 md:mx-16 lg:mx-28 my-9 md:py-20">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Key Offerings & Benefits:</h2>
+      <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
         {offerings.map((offering, index) => (
-          <Card key={index} className="bg-[#3B82F6] text-white">
-            <CardContent className="p-6">
-              <div className="flex gap-4">
-                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                  <Box className="w-6 h-6" />
+          <Card key={index} className={`bg-[#3B82F6] text-white ${index === 3 ? "sm:col-span-2 lg:col-span-2" : ""}`}>
+            <CardContent className="h-full p-6">
+              <div className="flex gap-4 h-full">
+                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
+                  <Briefcase className="w-6 h-6 text-white" />
                 </div>
-                <div className="space-y-2">
-                  <h3 className="font-semibold">{offering.title}</h3>
-                  <p className="text-white/80 text-sm">{offering.description}</p>
+                <div className="space-y-2.5">
+                  <h3 className="font-semibold text-lg">{offering.title}</h3>
+                  <p className="text-white/90 text-sm leading-relaxed">{offering.description}</p>
                 </div>
               </div>
             </CardContent>

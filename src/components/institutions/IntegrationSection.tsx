@@ -10,11 +10,11 @@ export function IntegrationSection() {
   ];
 
   return (
-    <section className="container py-16">
+    <section className="py-16 px-4 md:px-8 mx-4 sm:mx-8 md:mx-16 lg:mx-28 my-9 md:py-20">
       <h2 className="text-2xl font-bold text-center mb-12">
         How Skills Challenges Program can Be Integrated into your Learning Institution
       </h2>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="flex flex-col md:flex-row gap-8 items-center justify-around">
         <div className="space-y-6">
           {steps.map((step, index) => (
             <div key={index} className="flex gap-4 items-start">
@@ -26,7 +26,13 @@ export function IntegrationSection() {
           ))}
         </div>
         <div className="relative">
-          <Image src="/images/site-main.png" alt="Integration mockup" className="rounded-lg shadow-lg" width={300} height={300} />
+          <Image
+            src="/images/participation-img.png"
+            alt="Integration mockup"
+            className="rounded-lg"
+            width={500}
+            height={500}
+          />
         </div>
       </div>
     </section>
