@@ -38,6 +38,7 @@ export default function LoginOrSignUpForm() {
   }
 
   async function onSignupSubmit(data: SignupFormValues) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmPassword, ...registerData } = data;
     register(registerData);
   }

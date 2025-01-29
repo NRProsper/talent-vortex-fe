@@ -1,7 +1,17 @@
 import React from "react";
 import { ChallengeCard } from "@/components/global/ChallengeCard";
 import { Button } from "@/components/ui/button";
-import type { Challenge } from "@/types/challenge";
+interface Challenge {
+  id: string;
+  title: string;
+  skills: string[];
+  level: "Junior" | "Intermediate" | "Senior";
+  challengeLink: string;
+  startDate: string;
+  endDate: string;
+  image?: string;
+  companyName: string;
+}
 
 const challenges: Challenge[] = [
   {

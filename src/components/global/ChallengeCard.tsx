@@ -3,7 +3,17 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import type { Challenge } from "@/types/challenge";
+interface Challenge {
+  id: string;
+  title: string;
+  skills: string[];
+  level: "Junior" | "Intermediate" | "Senior";
+  challengeLink: string;
+  startDate: string;
+  endDate: string;
+  image?: string;
+  companyName: string;
+}
 
 interface ChallengeCardProps {
   challenge: Challenge;
