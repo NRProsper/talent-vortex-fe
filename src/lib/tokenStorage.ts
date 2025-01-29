@@ -1,3 +1,5 @@
+// file located at src/lib/tokenStorage.ts
+
 interface TokenData {
   token: string;
   expiresAt: number;

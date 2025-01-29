@@ -56,7 +56,7 @@ const sampleData = {
   ]
 };
 
-export function TalentNav() {
+export function AdminNav() {
   const pathname = usePathname();
 
   return (
@@ -69,7 +69,7 @@ export function TalentNav() {
             width={60}
             height={60}
           />
-          <p className="font-semibold text-3xl">Talent</p>
+          <p className="font-semibold text-3xl">Admin</p>
         </Link>
       </SidebarHeader>
       <SidebarContent>

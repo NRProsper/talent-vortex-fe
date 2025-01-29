@@ -62,7 +62,7 @@ const sampleData = {
 };
 
 
-export function Header() {
+export function AdminHeader() {
   return (
     <header className="flex h-14 items-center justify-between gap-4 border-b bg-background px-6">
       <div>
