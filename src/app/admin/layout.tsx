@@ -10,7 +10,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProtectedRoute allowedRoles={["admin"]} redirectTo="/login">
+    <ProtectedRoute allowedRoles={["admin"]} redirectTo="/join">
       <SidebarProvider defaultOpen={true}>
         <AdminNav />
         <SidebarInset>

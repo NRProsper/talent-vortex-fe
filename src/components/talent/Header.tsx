@@ -64,7 +64,7 @@ export function Header() {
   const handleSignOut = () => {
     removeToken();
     removeUser();
-    router.push("/login");
+    router.push("/join");
   };
 
   return (

@@ -79,6 +79,3 @@ export interface ChallengeResponse {
     totalPages: number;
   };
 }
-
-// Keep the existing types (CreateChallengeRequest, UpdateChallengeRequest, etc.) as they are
-

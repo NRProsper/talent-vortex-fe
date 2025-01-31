@@ -10,7 +10,7 @@ export default function TalentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProtectedRoute allowedRoles={["talent"]} redirectTo="/login">
+    <ProtectedRoute allowedRoles={["talent"]} redirectTo="/join">
       <SidebarProvider defaultOpen={true}>
         <TalentNav />
         <SidebarInset>

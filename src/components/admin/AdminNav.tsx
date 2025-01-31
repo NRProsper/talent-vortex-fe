@@ -23,16 +23,16 @@ import { useUser } from "@/hooks/useUser";
 import { removeToken } from "@/lib/tokenStorage";
 import { removeUser } from "@/lib/userStorage";
 import { useRouter } from "next/navigation";
+import JoinCommunity from "../global/JoinCommunity";
 
 const navigation = [
   {
     title: "Main",
     items: [
-      { name: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
+      { name: "Dashboard", icon: LayoutDashboard, href: "/admin" },
       { name: "Challenges & Hackathons", icon: Trophy, href: "/admin/challenges" },
       { name: "Categories", icon: Trophy, href: "/admin/category" },
-      { name: "Users", icon: Trophy, href: "/admin/user" },
-      { name: "Community", icon: Users, href: "/admin/community" },
+      { name: "Users", icon: Users, href: "/admin/user" },
     ],
   },
   {
@@ -55,6 +55,8 @@ export function AdminNav() {
     removeUser();
     router.push("/join");
   };
+
+  const whatsappLink = "https://whatsapp.com/your-community-link";
 
   return (
     <Sidebar className="border-r bg-primary text-primary-foreground">
@@ -82,6 +84,11 @@ export function AdminNav() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
+                {section.title === "Main" && (
+                  <SidebarMenuItem>
+                    <JoinCommunity whatsappLink={whatsappLink} />
+                  </SidebarMenuItem>
+                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

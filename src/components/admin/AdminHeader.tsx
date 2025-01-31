@@ -64,7 +64,7 @@ export function AdminHeader() {
   const handleSignOut = () => {
     removeToken();
     removeUser();
-    router.push("/login");
+    router.push("/join");
   };
 
   return (
