@@ -3,6 +3,7 @@ import axiosInstance from "@/lib/axiosConfig";
 import { handleAxiosError } from "@/lib/errorHandler";
 import { type LoginRequest, RegisterRequest } from "@/types";
 import { setToken, removeToken } from "@/lib/tokenStorage";
+import { removeUser, setUser } from "@/lib/userStorage";
 
 export const login = async (data: LoginRequest) => {
   try {
@@ -11,6 +12,7 @@ export const login = async (data: LoginRequest) => {
 
     if (response.data?.access_token) {
       setToken(response.data.access_token);
+      setUser(response.data.user);
     }
 
     return response.data;
@@ -21,6 +23,7 @@ export const login = async (data: LoginRequest) => {
 
 export const logout = () => {
   removeToken();
+  removeUser();
   window.location.href = "/join";
 };
 

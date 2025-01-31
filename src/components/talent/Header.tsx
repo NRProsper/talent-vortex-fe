@@ -1,7 +1,6 @@
-// file location: src/components/talent/Header.tsx
 "use client";
 
-import * as React from "react";
+import type * as React from "react";
 import { Bell, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,51 +17,56 @@ import * as Icons from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SidebarTrigger } from "../ui/sidebar";
 import Link from "next/link";
+import { useUser } from "@/hooks/useUser";
+import { useRouter } from "next/navigation";
+import { removeToken } from "@/lib/tokenStorage";
+import { removeUser } from "@/lib/userStorage";
 
-const sampleData = {
-  user: {
-    name: 'Hilaire Sh',
-    email: 'hilaire@uidesign',
-    avatar: '/placeholder.svg?height=32&width=32',
-    role: 'Product Designer',
-    quickActions: [
-      { id: 1, label: 'View Profile', icon: 'User', href: '/profile' },
-      { id: 2, label: 'Account Settings', icon: 'Settings', href: '/settings' },
-      { id: 3, label: 'Team Management', icon: 'Users', href: '/team' },
-      { id: 4, label: 'Billing', icon: 'CreditCard', href: '/billing' },
-      { id: 5, label: 'Sign Out', icon: 'LogOut', href: '/logout' }
-    ]
+const quickActions = [
+  { id: 1, label: "View Profile", icon: "User", href: "/profile" },
+  { id: 2, label: "Account Settings", icon: "Settings", href: "/settings" },
+  { id: 3, label: "Team Management", icon: "Users", href: "/team" },
+  { id: 4, label: "Billing", icon: "CreditCard", href: "/billing" },
+  { id: 5, label: "Sign Out", icon: "LogOut", href: "/logout" },
+];
+
+const sampleNotifications = [
+  {
+    id: 1,
+    title: "New Challenge Available",
+    description: "UI Design Challenge: E-commerce Dashboard",
+    time: "5 minutes ago",
+    read: false,
+    type: "challenge",
   },
-  notifications: [
-    {
-      id: 1,
-      title: 'New Challenge Available',
-      description: 'UI Design Challenge: E-commerce Dashboard',
-      time: '5 minutes ago',
-      read: false,
-      type: 'challenge'
-    },
-    {
-      id: 2,
-      title: 'Team Invitation',
-      description: 'John Doe invited you to join Design Team',
-      time: '1 hour ago',
-      read: false,
-      type: 'team'
-    },
-    {
-      id: 3,
-      title: 'Hackathon Starting Soon',
-      description: 'Web3 Hackathon starts in 2 hours',
-      time: '2 hours ago',
-      read: true,
-      type: 'hackathon'
-    }
-  ],
-};
-
+  {
+    id: 2,
+    title: "Team Invitation",
+    description: "John Doe invited you to join Design Team",
+    time: "1 hour ago",
+    read: false,
+    type: "team",
+  },
+  {
+    id: 3,
+    title: "Hackathon Starting Soon",
+    description: "Web3 Hackathon starts in 2 hours",
+    time: "2 hours ago",
+    read: true,
+    type: "hackathon",
+  },
+];
 
 export function Header() {
+  const { firstName, lastName, email } = useUser();
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    removeToken();
+    removeUser();
+    router.push("/login");
+  };
+
   return (
     <header className="flex h-14 items-center justify-between gap-4 border-b bg-background px-6">
       <div>
@@ -76,7 +80,7 @@ export function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
               <Bell className="size-4" />
-              {sampleData.notifications.some((n) => !n.read) && (
+              {sampleNotifications.some((n) => !n.read) && (
                 <span className="absolute right-2 top-2 size-2 rounded-full bg-primary" />
               )}
             </Button>
@@ -84,7 +88,7 @@ export function Header() {
           <DropdownMenuContent align="end" className="w-[380px]">
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {sampleData.notifications.map((notification) => (
+            {sampleNotifications.map((notification) => (
               <DropdownMenuItem key={notification.id} className="flex gap-4 p-4">
                 <div
                   className={cn("flex size-8 shrink-0 items-center justify-center rounded-full", {
@@ -107,30 +111,39 @@ export function Header() {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon" className="relative" aria-label="User menu">
               <Avatar className="size-8">
-                <AvatarImage src={sampleData.user.avatar} />
-                <AvatarFallback>HS</AvatarFallback>
+                <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${firstName} ${lastName}`} />
+                <AvatarFallback>
+                  {firstName ? firstName[0] : ''}
+                  {lastName ? lastName[0] : ''}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{sampleData.user.name}</p>
-                <p className="text-xs leading-none text-muted-foreground">{sampleData.user.email}</p>
+                <p className="text-sm font-medium leading-none">
+                  {firstName} {lastName}
+                </p>
+                <p className="text-xs leading-none text-muted-foreground">{email}</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {sampleData.user.quickActions.map((action) => {
+            {quickActions.map((action) => {
               const Icon = Icons[action.icon as keyof typeof Icons] as React.ElementType;
               return (
                 <DropdownMenuItem key={action.id} asChild>
-                  <Link
-                    href={action.href}
-                    className="flex items-center px-2 py-1.5 cursor-pointer"
-                  >
-                    <Icon className="mr-2 size-4" />
-                    <span>{action.label}</span>
-                  </Link>
+                  {action.label === "Sign Out" ? (
+                    <button onClick={handleSignOut} className="flex w-full items-center px-2 py-1.5 cursor-pointer">
+                      <Icon className="mr-2 size-4" />
+                      <span>{action.label}</span>
+                    </button>
+                  ) : (
+                    <Link href={action.href} className="flex items-center px-2 py-1.5 cursor-pointer">
+                      <Icon className="mr-2 size-4" />
+                      <span>{action.label}</span>
+                    </Link>
+                  )}
                 </DropdownMenuItem>
               );
             })}
@@ -140,3 +153,4 @@ export function Header() {
     </header>
   );
 }
+

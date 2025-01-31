@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import LoadingSpinner from "@/components/global/LoadingSpinner";
 import { useAuth } from "@/hooks/useAuthHooks";
@@ -6,14 +6,12 @@ import { Fragment, type ReactNode } from "react";
 
 interface ProtectedRouteProps {
   children: ReactNode;
+  allowedRoles: string[];
   redirectTo?: string;
 }
 
-export function ProtectedRoute({
-  children,
-  redirectTo = "/join"
-}: ProtectedRouteProps) {
-  const isAuthenticated = useAuth(redirectTo);
+export function ProtectedRoute({ children, redirectTo = "/join", allowedRoles }: ProtectedRouteProps) {
+  const isAuthenticated = useAuth(allowedRoles, redirectTo);
 
   if (!isAuthenticated) {
     return (
@@ -25,3 +23,4 @@ export function ProtectedRoute({
 
   return <Fragment>{children}</Fragment>;
 }
+

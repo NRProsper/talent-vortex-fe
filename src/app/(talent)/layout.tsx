@@ -1,8 +1,8 @@
-// file located at src/app/(talent)/layout.tsx
 import { TalentNav } from "@/components/talent/TalentNav";
 import { Header } from "@/components/talent/Header";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { ProtectedRoute } from "../ProtectedRoute";
+import type React from "react";
 
 export default function TalentLayout({
   children,
@@ -10,7 +10,7 @@ export default function TalentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProtectedRoute>
+    <ProtectedRoute allowedRoles={["talent"]} redirectTo="/login">
       <SidebarProvider defaultOpen={true}>
         <TalentNav />
         <SidebarInset>
