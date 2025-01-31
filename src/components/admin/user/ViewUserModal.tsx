@@ -1,3 +1,4 @@
+import LoadingSpinner from "@/components/global/LoadingSpinner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useGetSingleUser } from "@/hooks/useUserHooks";
 
@@ -10,7 +11,7 @@ interface ViewUserModalProps {
 export default function ViewUserModal({ userId, isOpen, onClose }: ViewUserModalProps) {
   const { data: user, isLoading, isError } = useGetSingleUser(userId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (isError) return <div>Error fetching user details</div>;
 
   return (

@@ -30,6 +30,7 @@ import { useDeleteCategory, useGetCategories } from "@/hooks/useCategoryHooks";
 import AddCategoryModal from "./AddCategoryModal";
 import EditCategoryModal from "./EditCategoryModal";
 import type { Category } from "@/types";
+import LoadingSpinner from "@/components/global/LoadingSpinner";
 
 export default function CategoriesTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -122,7 +123,7 @@ export default function CategoriesTable() {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (isError) return <div>Error fetching categories</div>;
 
   return (

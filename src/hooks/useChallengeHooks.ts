@@ -1,6 +1,8 @@
+// file located at src/hooks/useChallengeHooks.ts
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { createChallenge, updateChallenge, getChallenges, deleteChallenge } from "@/services/challengeService";
+import { createChallenge, updateChallenge, getChallenges, deleteChallenge, getSingleChallenge } from "@/services/challengeService";
 import type { CreateChallengeRequest, UpdateChallengeRequest, QueryChallengeRequest } from "@/types";
 
 export const useCreateChallenge = () => {
@@ -37,6 +39,13 @@ export const useGetChallenges = (params?: QueryChallengeRequest) => {
   return useQuery({
     queryKey: ["challenges", params],
     queryFn: () => getChallenges(params),
+  });
+};
+
+export const useGetSingleChallenge = (id: string) => {
+  return useQuery({
+    queryKey: ["challenge", id],
+    queryFn: () => getSingleChallenge(id),
   });
 };
 

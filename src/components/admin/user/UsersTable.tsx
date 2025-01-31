@@ -32,6 +32,7 @@ import EditUserModal from "./EditUserModal";
 import ViewUserModal from "./ViewUserModal";
 import { type User, UserRole, UserSortField, SortOrder, type QueryUserRequest } from "@/types";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import LoadingSpinner from "@/components/global/LoadingSpinner";
 
 export default function UsersTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -147,7 +148,7 @@ export default function UsersTable() {
     }));
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner />;
   if (isError) return <div>Error fetching users</div>;
 
   return (
