@@ -1,6 +1,6 @@
 // file located at src/types/challenge.ts
 
-import { SortOrder } from ".";
+import { Category, SortOrder } from ".";
 
 export type CreateChallengeRequest = {
   title: string;
@@ -47,14 +47,6 @@ export type Prize = {
   place: string;
   minValue: number;
   maxValue: number;
-};
-
-export type Category = {
-  _id: string;
-  name: string;
-  description?: string;
-  slug: string;
-  tags?: string[];
 };
 
 export interface Challenge {

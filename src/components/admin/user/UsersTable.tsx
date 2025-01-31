@@ -140,14 +140,6 @@ export default function UsersTable() {
     setQueryParams((prev) => ({ ...prev, role }));
   };
 
-  const handleSort = (field: UserSortField) => {
-    setQueryParams((prev) => ({
-      ...prev,
-      sortField: field,
-      sortOrder: prev.sortOrder === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC,
-    }));
-  };
-
   if (isLoading) return <LoadingSpinner />;
   if (isError) return <div>Error fetching users</div>;
 
@@ -225,7 +217,7 @@ export default function UsersTable() {
             variant="outline"
             size="sm"
             onClick={() => setQueryParams((prev) => ({ ...prev, page: prev.page! + 1 }))}
-            disabled={queryParams.page! * queryParams.limit! >= usersData?.totalUsers!}
+            disabled={queryParams.page! * queryParams.limit! >= (usersData?.totalUsers ?? 0)}
           >
             Next
           </Button>
