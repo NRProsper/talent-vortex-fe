@@ -68,7 +68,7 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
           asChild
           className="hover:bg-white hover:text-primary hover:outline hover:outline-1 hover:outline-primary transition-colors duration-200 mt-4"
         >
-          <Link href={`/challenges/${challenge.slug}`}>View Challenge</Link>
+          <Link href={`/challenges/${challenge._id}`}>View Challenge</Link>
         </Button>
       </CardFooter>
     </Card>
