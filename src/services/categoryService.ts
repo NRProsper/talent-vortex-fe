@@ -1,6 +1,18 @@
+// file located at src/services/categoryService.ts
+
 import axiosInstance from '@/lib/axiosConfig';
 import { handleAxiosError } from '@/lib/errorHandler';
 import { CreateCategoryRequest, UpdateCategoryRequest } from '@/types';
+
+
+export const getCategories = async () => {
+  try {
+    const response = await axiosInstance.get('/categories');
+    return response.data;
+  } catch (error) {
+    throw new Error(handleAxiosError(error));
+  }
+};
 
 export const createCategory = async (data: CreateCategoryRequest) => {
   try {

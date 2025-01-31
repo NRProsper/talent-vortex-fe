@@ -28,9 +28,10 @@ const navigation = [
   {
     title: "Main",
     items: [
-      { name: "Dashboard", icon: LayoutDashboard, href: "/talent/dashboard" },
-      { name: "Challenges & Hackathons", icon: Trophy, href: "/talent/challenges" },
-      { name: "Community", icon: Users, href: "/talent/community" },
+      { name: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
+      { name: "Challenges & Hackathons", icon: Trophy, href: "/admin/challenges" },
+      { name: "Categories", icon: Trophy, href: "/admin/category" },
+      { name: "Community", icon: Users, href: "/admin/community" },
     ],
   },
   {

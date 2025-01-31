@@ -1,7 +1,16 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+// file location: src/hooks/useCategoryHooks
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { createCategory, updateCategory, deleteCategory } from "@/services/categoryService";
+import { createCategory, updateCategory, deleteCategory, getCategories } from "@/services/categoryService";
 import type { CreateCategoryRequest, UpdateCategoryRequest } from "@/types";
+
+export const useGetCategories = () => {
+  return useQuery({
+    queryKey: ["categories",],
+    queryFn: () => getCategories(),
+  });
+};
 
 export const useCreateCategory = () => {
   const queryClient = useQueryClient();
