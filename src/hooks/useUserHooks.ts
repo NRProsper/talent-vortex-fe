@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { createUser, updateUser, getUsers, deleteUser } from "@/services/userService";
+import { createUser, updateUser, getUsers, deleteUser, getSingleUser } from "@/services/userService";
 import type { CreateUserRequest, UpdateUserRequest, QueryUserRequest } from "@/types";
 
 export const useCreateUser = () => {
@@ -37,6 +37,13 @@ export const useGetUsers = (params?: QueryUserRequest) => {
   return useQuery({
     queryKey: ["users", params],
     queryFn: () => getUsers(params),
+  });
+};
+
+export const useGetSingleUser = (id: string) => {
+  return useQuery({
+    queryKey: ["user"],
+    queryFn: () => getSingleUser(id),
   });
 };
 

@@ -31,6 +31,7 @@ const navigation = [
       { name: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
       { name: "Challenges & Hackathons", icon: Trophy, href: "/admin/challenges" },
       { name: "Categories", icon: Trophy, href: "/admin/category" },
+      { name: "Users", icon: Trophy, href: "/admin/user" },
       { name: "Community", icon: Users, href: "/admin/community" },
     ],
   },
