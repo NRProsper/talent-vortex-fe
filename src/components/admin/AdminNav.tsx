@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, ChevronDown, LayoutDashboard, Trophy, Users, Settings, HelpCircle, UserPlus } from "lucide-react";
+import { LogOut, ChevronDown, LayoutDashboard, Trophy, Users, Settings, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -38,9 +38,8 @@ const navigation = [
   {
     title: "Support",
     items: [
-      { name: "Settings", icon: Settings, href: "/talent/settings" },
-      { name: "Help Center", icon: HelpCircle, href: "/talent/help" },
-      { name: "Refer family & friends", icon: UserPlus, href: "/talent/refer" },
+      { name: "Settings", icon: Settings, href: "/admin/settings" },
+      { name: "Help Center", icon: HelpCircle, href: "/admin/help" },
     ],
   },
 ];

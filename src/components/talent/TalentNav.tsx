@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, ChevronDown, LayoutDashboard, Trophy, Users, Settings, HelpCircle, UserPlus } from "lucide-react";
+import { LogOut, ChevronDown, LayoutDashboard, Trophy, Settings, HelpCircle, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -23,6 +23,7 @@ import { useUser } from "@/hooks/useUser";
 import { removeToken } from "@/lib/tokenStorage";
 import { removeUser } from "@/lib/userStorage";
 import { useRouter } from "next/navigation";
+import JoinCommunity from "../global/JoinCommunity";
 
 const navigation = [
   {
@@ -30,7 +31,6 @@ const navigation = [
     items: [
       { name: "Dashboard", icon: LayoutDashboard, href: "/talent/dashboard" },
       { name: "Challenges & Hackathons", icon: Trophy, href: "/talent/challenges" },
-      { name: "Community", icon: Users, href: "/talent/community" },
     ],
   },
   {
@@ -53,6 +53,8 @@ export function TalentNav() {
     removeUser();
     router.push("/join");
   };
+
+  const whatsappLink = "https://whatsapp.com/your-community-link";
 
   return (
     <Sidebar className="border-r bg-primary text-primary-foreground">
@@ -80,6 +82,11 @@ export function TalentNav() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
+                {section.title === "Main" && (
+                  <SidebarMenuItem>
+                    <JoinCommunity whatsappLink={whatsappLink} />
+                  </SidebarMenuItem>
+                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
