@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, ChevronDown, LayoutDashboard, Trophy, Settings, HelpCircle, UserPlus } from "lucide-react";
+import { LogOut, ChevronDown, LayoutDashboard, Trophy, Settings, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -23,13 +23,13 @@ import { useUser } from "@/hooks/useUser";
 import { removeToken } from "@/lib/tokenStorage";
 import { removeUser } from "@/lib/userStorage";
 import { useRouter } from "next/navigation";
-import JoinCommunity from "../global/JoinCommunity";
+import ReferAnother from "../global/ReferAnother";
 
 const navigation = [
   {
     title: "Main",
     items: [
-      { name: "Dashboard", icon: LayoutDashboard, href: "/talent/dashboard" },
+      { name: "Dashboard", icon: LayoutDashboard, href: "/talent" },
       { name: "Challenges & Hackathons", icon: Trophy, href: "/talent/challenges" },
     ],
   },
@@ -38,7 +38,6 @@ const navigation = [
     items: [
       { name: "Settings", icon: Settings, href: "/talent/settings" },
       { name: "Help Center", icon: HelpCircle, href: "/talent/help" },
-      { name: "Refer family & friends", icon: UserPlus, href: "/talent/refer" },
     ],
   },
 ];
@@ -54,7 +53,6 @@ export function TalentNav() {
     router.push("/join");
   };
 
-  const whatsappLink = "https://whatsapp.com/your-community-link";
 
   return (
     <Sidebar className="border-r bg-primary text-primary-foreground">
@@ -82,9 +80,9 @@ export function TalentNav() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-                {section.title === "Main" && (
+                {section.title === "Support" && (
                   <SidebarMenuItem>
-                    <JoinCommunity whatsappLink={whatsappLink} />
+                    <ReferAnother />
                   </SidebarMenuItem>
                 )}
               </SidebarMenu>
