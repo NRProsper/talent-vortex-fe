@@ -27,7 +27,7 @@ export const footerData = {
   socialLinks: [
     { title: "Facebook", href: "https://www.facebook.com/UmuravaAfrica", icon: "FaFacebook" },
     { title: "Twitter", href: "https://twitter.com/Umurava_", icon: "FaTwitter" },
-    { title: "LinkedIn", href: "https://www.facebook.com/UmuravaAfrica", icon: "FaLinkedin" },
+    { title: "LinkedIn", href: "https://rw.linkedin.com/company/umuravaafrica", icon: "FaLinkedin" },
     { title: "YouTube", href: "https://www.youtube.com/@umurava_Africa", icon: "FaYoutube" },
   ],
   legal: {

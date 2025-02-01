@@ -1,5 +1,4 @@
 // file located at src/hooks/useChallengeHooks.ts
-
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { createChallenge, updateChallenge, getChallenges, deleteChallenge, getSingleChallenge } from "@/services/challengeService";
