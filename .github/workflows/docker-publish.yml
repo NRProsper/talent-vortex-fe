@@ -35,6 +35,7 @@ jobs:
             echo "TAG=prod" >> $GITHUB_ENV
           else
             echo "TAG=${{ github.sha }}" >> $GITHUB_ENV
+          fi
       # Step 4: Build and Push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
@@ -42,5 +43,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/talent-vortex-fe:${{ env.TAG }}
-            ghcr.io/${{ github.repository_owner }}/talent-vortex-fe:latest
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ env.TAG }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
