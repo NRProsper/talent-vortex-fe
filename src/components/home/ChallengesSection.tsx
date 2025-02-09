@@ -1,42 +1,20 @@
-import React from "react";
+"use client";
+
 import { ChallengeCard } from "@/components/global/ChallengeCard";
 import { Button } from "@/components/ui/button";
-import type { Challenge } from "@/types/challenge";
-
-const challenges: Challenge[] = [
-  {
-    id: "1",
-    title: "Design a Dashboard for SokoFund",
-    skills: ["UI/UX Design", "User Research", "User Interface"],
-    level: "Intermediate",
-    challengeLink: "#",
-    startDate: "2024-01-20",
-    endDate: "2025-02-05",
-    companyName: "Umurava",
-  },
-  {
-    id: "2",
-    title: "Design a Dashboard for SokoFund",
-    skills: ["UI/UX Design", "User Research", "User Interface"],
-    level: "Junior",
-    challengeLink: "#",
-    startDate: "2024-01-15",
-    endDate: "2024-01-30",
-    companyName: "Umurava",
-  },
-  {
-    id: "3",
-    title: "Design a Dashboard for SokoFund",
-    skills: ["UI/UX Design", "User Research", "User Interface"],
-    level: "Senior",
-    challengeLink: "#",
-    startDate: "2024-01-25",
-    endDate: "2024-02-10",
-    companyName: "Umurava",
-  },
-];
+import LoadingSpinner from "../global/LoadingSpinner";
+import { useGetChallenges } from "@/hooks/useChallengeHooks";
+import type { Challenge } from "@/types";
+import Link from "next/link";
 
 export default function ChallengesSection() {
+  const { data, isLoading, isError } = useGetChallenges({ limit: 3 });
+
+  const challenges = data?.challenges || [];
+
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) return <div>Error loading challenges</div>;
+
   return (
     <section className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 my-9 md:py-20">
       <div className="container mx-auto">
@@ -49,14 +27,14 @@ export default function ChallengesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {challenges.map((challenge) => (
-            <ChallengeCard key={challenge.id} challenge={challenge} />
+          {challenges.map((challenge: Challenge) => (
+            <ChallengeCard key={challenge._id} challenge={challenge} />
           ))}
         </div>
 
         <div className="text-center">
-          <Button variant="outline" size="lg" className="hover:bg-primary hover:text-white">
-            View More
+          <Button asChild variant="outline" size="lg" className="hover:bg-primary hover:text-white">
+            <Link href="/challenges">View More</Link>
           </Button>
         </div>
       </div>

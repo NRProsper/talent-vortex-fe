@@ -1,4 +1,18 @@
+// file located at src/types/auth.ts
+
 import * as z from "zod";
+
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+
+export type RegisterRequest = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
 
 export const loginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -7,9 +21,6 @@ export const loginSchema = z.object({
 
 export const signupSchema = z
   .object({
-    joinAs: z.enum(["talent", "client"], {
-      required_error: "Please select whether you're joining as talent or client",
-    }),
     firstName: z.string().min(2, { message: "First name must be at least 2 characters" }),
     lastName: z.string().min(2, { message: "Last name must be at least 2 characters" }),
     email: z.string().email({ message: "Please enter a valid email address" }),
@@ -27,5 +38,4 @@ export const signupSchema = z
   });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
-export type SignupFormValues = z.infer<typeof signupSchema>
-
+export type SignupFormValues = z.infer<typeof signupSchema>;

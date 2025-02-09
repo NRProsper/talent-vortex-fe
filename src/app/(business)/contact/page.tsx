@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import ContactForm from "@/components/contact/ContactForm";
 import MapLocation from '@/components/global/MapLocation';
 
-export default function HispRwandaContactPage() {
+export default function UmuravaContactPage() {
   return (
     <div className="container mx-auto px-4 md:px-28 py-16">
       <div className="grid gap-8 lg:grid-cols-2 mt-1 md:mt-12">
@@ -13,7 +13,7 @@ export default function HispRwandaContactPage() {
               Let&apos;s Keep In Touch
             </h1>
             <p className="text-lg text-muted-foreground max-w-md">
-              A private company offering a range of expertise that develops and deploys information systems with customization solutions that support country and community efforts to achieve health care delivery.
+              A custom talent marketplace and workforce outsourcing platform that connects businesses with Africa&apos;s quality workforce, on-demand in just 48 hours.
             </p>
           </div>
 
@@ -21,37 +21,19 @@ export default function HispRwandaContactPage() {
             <div className="flex items-center space-x-3">
               <Phone className="h-5 w-5 text-primary" />
               <a
-                href="tel:+250791590407"
+                href="tel:+250123456789"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                +250 791 590 407
-              </a>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Phone className="h-5 w-5 text-primary" />
-              <a
-                href="tel:+250791590406"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                +250 791 590 406
+                +250 123 456 789
               </a>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="h-5 w-5 text-primary" />
               <a
-                href="mailto:hisp.rwanda@gmail.com"
+                href="mailto:marketplace@umurava.africa"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                hisp.rwanda@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Mail className="h-5 w-5 text-primary" />
-              <a
-                href="mailto:contact@hisprwanda.com"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                contact@hisprwanda.com
+                marketplace@umurava.africa
               </a>
             </div>
             <div className="flex items-center space-x-3">
