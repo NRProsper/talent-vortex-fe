@@ -13,11 +13,13 @@ interface EditChallengeModalProps {
 }
 
 export default function EditChallengeModal({ challenge, isOpen, onClose }: EditChallengeModalProps) {
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<UpdateChallengeRequest>({
+    //@ts-expect-error the defaultValues is not typed in react-hook-form
     defaultValues: challenge,
   });
   const updateChallenge = useUpdateChallenge();

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, ChevronDown, LayoutDashboard, Trophy, Settings, HelpCircle } from "lucide-react";
+import { LogOut, ChevronDown, LayoutDashboard, Trophy, Users, Settings, HelpCircle, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
@@ -23,14 +23,14 @@ import { useUser } from "@/hooks/useUser";
 import { removeToken } from "@/lib/tokenStorage";
 import { removeUser } from "@/lib/userStorage";
 import { useRouter } from "next/navigation";
-import ReferAnother from "../global/ReferAnother";
 
 const navigation = [
   {
     title: "Main",
     items: [
-      { name: "Dashboard", icon: LayoutDashboard, href: "/talent" },
+      { name: "Dashboard", icon: LayoutDashboard, href: "/talent/dashboard" },
       { name: "Challenges & Hackathons", icon: Trophy, href: "/talent/challenges" },
+      { name: "Community", icon: Users, href: "/talent/community" },
     ],
   },
   {
@@ -38,6 +38,7 @@ const navigation = [
     items: [
       { name: "Settings", icon: Settings, href: "/talent/settings" },
       { name: "Help Center", icon: HelpCircle, href: "/talent/help" },
+      { name: "Refer family & friends", icon: UserPlus, href: "/talent/refer" },
     ],
   },
 ];
@@ -52,7 +53,6 @@ export function TalentNav() {
     removeUser();
     router.push("/join");
   };
-
 
   return (
     <Sidebar className="border-r bg-primary text-primary-foreground">
@@ -80,11 +80,6 @@ export function TalentNav() {
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-                {section.title === "Support" && (
-                  <SidebarMenuItem>
-                    <ReferAnother />
-                  </SidebarMenuItem>
-                )}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
